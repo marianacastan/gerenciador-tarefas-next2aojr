@@ -1,0 +1,208 @@
+@import './config.scss';
+
+.container-modal {
+    margin-top: 30%;
+
+    p {
+        color: $primaryColor;
+        text-align: center;
+        font-size: 17px;
+        margin-top: 15px;
+        font-weight: bold;
+
+        &.error{
+            margin-top: 0px;
+            color: $errorColor;
+            font-size: 15px;
+            font-weight: normal;
+        }
+    }
+
+    input {
+        border-width: 0.5px;
+        color: $secondaryColor;
+        border-color: $mediumGreyColor;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 95%;
+
+        &:hover{
+            border-color: $primaryColor;
+        }
+    }
+    span {
+        color: $primaryColor;
+        text-align: left;
+        font-size: 15px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    .modal-body{
+        display: flex;
+        flex-direction: column;
+    
+    }
+
+    .modal-content{
+        border-radius: 15px;
+    }
+
+    .modal-footer{
+        border-top: none;
+    }
+
+    .button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+
+        button{
+            width: 40%;
+            height: 50px;
+            background-color: $primaryColor;
+            border: none;
+            outline: none;
+            color: white;
+            border-radius: 12px;
+            font-size: 15px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        span{
+            color: $mediumGreyColor;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+
+    @media screen and (min-width : $mediaQueryDesktop){
+        margin-top: 100px;
+
+        .button{
+
+            button{
+                background-color: $mediumGreyColor;
+                
+                &:hover{
+                    background-color: $primaryColor;
+                }
+            }
+        }
+    }
+}
+
+.container-register{
+    margin-top: 20%;
+
+    p {
+        color: $primaryColor;
+        text-align: center;
+        font-size: 17px;
+        margin-top: 15px;
+        font-weight: bold;
+
+        &.error{
+            margin-top: 0px;
+            color: $errorColor;
+            font-size: 15px;
+            font-weight: normal;
+        }
+        &.RegisterMsg{
+            margin-top: 0px;
+            color: $sucessColor;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    }
+
+    input {
+        border-width: 0.5px;
+        color: $secondaryColor;
+        border-color: $mediumGreyColor;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-bottom: 12px;
+        width: 95%;
+
+        &:hover{
+            border-color: $primaryColor;
+        }
+    }
+
+    span {
+        color: $primaryColor;
+        text-align: left;
+        font-size: 15px;
+    }
+
+    .modal-body{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content{
+        border-radius: 15px;
+    }
+
+    .modal-footer{
+        border-top: none;
+    
+    }
+
+    #instrucao_senha{
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+
+    .button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+
+        button{
+            width: 40%;
+            height: 50px;
+            background-color: $primaryColor;
+            border: none;
+            outline: none;
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        span{
+            color: $mediumGreyColor;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+
+    @media screen and (min-width : $mediaQueryDesktop){
+        margin-top: 100px;
+
+
+        .button{
+
+            button{
+                background-color: $mediumGreyColor;
+                
+                &:hover{
+                    background-color: $primaryColor;
+                }
+            }
+        }
+    }
+
+}
