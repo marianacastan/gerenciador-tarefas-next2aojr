@@ -20,6 +20,7 @@
 
     input {
         border-width: 0.5px;
+        color: $secondaryColor;
         border-color: $mediumGreyColor;
         border-radius: 8px;
         padding: 10px;
@@ -30,12 +31,18 @@
             border-color: $primaryColor;
         }
     }
+    span {
+        color: $primaryColor;
+        text-align: left;
+        font-size: 15px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
 
     .modal-body{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    
     }
 
     .modal-content{

@@ -16,7 +16,9 @@ export const List: NextPage<ListProps> = ({ tasks, getFilteredData }) => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [name, setName] = useState("");
+  const [newName, setNewName] = useState("");
   const [finishPrevisionDate, setFinishPrevisionDate] = useState("");
+  const [newFinishPrevisionDate, setNewFinishPrevisionDate] = useState("");
   const [_id, setId] = useState<string | undefined>("");
   const [finishDate, setFinishDate] = useState("");
 
@@ -27,7 +29,7 @@ export const List: NextPage<ListProps> = ({ tasks, getFilteredData }) => {
     setId(task._id);
     setName(task.name);
     setFinishPrevisionDate(
-      moment(task.finishPrevisionDate).format("yyyy-MM-DD")
+      moment.utc(task.finishPrevisionDate).format("yyyy-MM-DD")
     );
   };
 
@@ -37,6 +39,8 @@ export const List: NextPage<ListProps> = ({ tasks, getFilteredData }) => {
     setErrorMsg("");
     setName("");
     setFinishPrevisionDate("");
+    setNewName("");
+    setNewFinishPrevisionDate("");
     setFinishDate("");
     setId("");
   };
@@ -45,21 +49,21 @@ export const List: NextPage<ListProps> = ({ tasks, getFilteredData }) => {
     try {
       setErrorMsg("");
       if (!name || !finishPrevisionDate || !_id) {
-        return setErrorMsg(
-          "Favor preencher os campos"
-        );
+        return setErrorMsg("Favor preencher os campos");
       }
       setLoading(true);
 
       const body = {
-        name,
-        finishPrevisionDate,
+        name: newName ? newName : name,
+        finishPrevisionDate: newFinishPrevisionDate
+          ? newFinishPrevisionDate
+          : finishPrevisionDate,
       } as any;
 
-      if(finishDate){
+      if (finishDate) {
         body.finishDate = finishDate;
       }
-      await executeRequest("task?id="+_id, "PUT", body);
+      await executeRequest("task?id=" + _id, "PUT", body);
       getFilteredData();
       closeModal();
     } catch (e: any) {
@@ -115,18 +119,21 @@ export const List: NextPage<ListProps> = ({ tasks, getFilteredData }) => {
         <Modal.Body>
           <p>Alterar tarefa</p>
           {errorMsg && <p className="error">{errorMsg}</p>}
+          <span>Tarefa</span>
           <input
             type="text"
             placeholder="Nome da tarefa"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
           />
+          <span>Previsão de conclusão</span>
           <input
             type="date"
             placeholder="Previsão de conclusão"
-            value={finishPrevisionDate}
-            onChange={(e) => setFinishPrevisionDate(e.target.value)}
+            value={newFinishPrevisionDate}
+            onChange={(e) => setNewFinishPrevisionDate(e.target.value)}
           />
+          <span>Data de conclusão</span>
           <input
             type="date"
             placeholder="Data de conclusão"
