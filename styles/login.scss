@@ -67,6 +67,18 @@
       }
     }
 
+    .register{
+            button{
+                width: 100%;
+                height: 56px;
+                background-color: white;
+                color: $secondaryColor;
+                border: none;
+                font-size: 14px;
+                margin-top: 10px;
+            }
+    }
+    
     @media screen and (min-width: $mediaQueryDesktop) {
         display: flex;
         align-items: center;
@@ -98,6 +110,11 @@
 
             button {
                 font-size: 18px;
+            }
+        }
+        .register{
+            button{
+                font-size: 15px;
             }
         }
     }

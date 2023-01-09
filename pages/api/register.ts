@@ -22,7 +22,8 @@ try{
     return res.status(400).json({ error: 'Email inválido' });
 }
 
-  if (!password || password.length < 6 || !password.includes('@')) {
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&!@#])[0-9a-zA-Z$*&!@#]{8,}$/;
+  if (!password || !passwordRegex.test(password)) {
     return res.status(400).json({ error: 'Senha inválida' });
 }
 
